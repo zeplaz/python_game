@@ -5,6 +5,7 @@ Created on Mon Dec 13 01:04:25 2021
 
 @author: matthew
 """
+import sys
 
 import core.engine as Eng
 
@@ -13,11 +14,16 @@ def main():
    # pygame.init()
 #caputre argments.
     def_start = False
-    eng = Eng.Engine(def_start)
-
+    run_tests = True
+   
+    eng = Eng.Engine(def_start,run_tests)
+     
     eng.__run__()
-    eng.shutown()
-
+    eng.loop()
+    
+    eng.shutdown()
+    
+    print("###30##")
     return 0
 
 #while run:

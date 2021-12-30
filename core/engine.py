@@ -22,27 +22,29 @@ _________________________________//
 ##################################
 """
 ##xore moduals
-import sys
-import ctypes
+import os
 
 ##3rdparty moduals
-import OpenGL
+#import OpenGL
 import sdl2
-import sdl2.ext as sdlext
+#import sdl2.ext as sdlext
 #import pygame
 
 ## sorce moduals
-import render as rend
+import core.render as rend
+#import core.world.resources as rez 
+import core.resources as rez
 
 # condtionals for opration
+
 run = True
 sigma_running = True
-
+R_TESTS = False
 #engine status
-INITAL   = 01
-CONFIG   = 03
-IGNITION = 04
-RUNNING  = 05
+INITAL   = 1
+CONFIG   = 3
+IGNITION = 4
+RUNNING  = 5
 ERROR_HANDLED = 0
 ERROR_FATAIL = -1
 ERROR_UNKNOWN = -2
@@ -50,60 +52,79 @@ ERROR_UNKNOWN = -2
 
 sigma_status = INITAL
 
+        
 class Engine:
-    def __init__(this,start):
-        global run
-        if (start is not None)
-            run = start
-
+    def __init__(this,start, withtests):
+        global run, R_TESTS
+        R_TESTS = withtests
         this.root_path = os.path.dirname(os.path.abspath(__file__))
+        this._render = rend.render()
+        if start is not None:
+            run = start     
 
-        if run
-            this._run__()
+        if run:
+            this.__run__()
 
+    def __test__(this):
+        print("\n ****************ENGINE)((()__TEST__())()))*******\n")
+        this.rez =  rez.Rez(this.root_path, this._render)
+        this.rez.__test__()
+        
     def __run__(this):
+        
+        this.startup()
+        
+        if R_TESTS:
+          this.__test__()
 
-       this.startup()
-       rend.window.show()
+       #rend.window.show()
 
     def loop(this):
         global sigma_running, sigma_status
         sigma_status = RUNNING
         while sigma_running:
-            this.sdl_updater()
+            this.sdl_event_poll()
             this.render_update()
             this.update_ai()
+        else:
+          print('shutdown \n |-called closing..properly so far,,?,')
+    
+    def update_ai(this):
+        return        
 
+    def render_update(this):
+        this._render.update()
 
-    def render_update():
-        this.rend.window.refresh()
-
-
+    def handle_sdl2window_event(this, event):
+        global sigma_running
+        print("handling sdl2_window events")
+        if event == sdl2.SDL_WINDOWEVENT_CLOSE:
+            sigma_running = False
+            
+        
     def sdl_event_poll(this):
+        #if sdl2.SDL_PollEvent(event)!=0:
         global events, sigma_running
         events = sdl2.ext.get_events()
         for event in events :
             if event.type == sdl2.SDL_QUIT:
                 sigma_running = False
-    #if sdl2.SDL_PollEvent(event)!=0:
-    ##
+                break; 
+            if event.type == sdl2.SDL_WINDOWEVENT :
+                this.handle_sdl2window_event(event)
+                       
 
-    def sdl_updater():
-        sdl2.SDL_RenderPresent(this.renderer_SDL)
-        sdl_event_poll()
-
-
-    def startup():
+    def startup(this):
         print("startup")
         global events
 
         sdl2.SDL_Init(sdl2.SDL_INIT_VIDEO)
         events = sdl2.ext.get_events()
-        rez = _rez(this.root_path)
+        #rez = rez(this.root_path)
 
-    def shutdown():
-        this.rez.shutdown()
-        this.rend.shutdown()
-
+    def shutdown(this):
+        print("shutdown engine called")
+        #this.rez.shutdown()
+        this._render.shutdown()
         sdl2.SDL_Quit
-        exit()
+       

@@ -20,6 +20,7 @@ _________________________________//
 ##################################
 """
 ##xore modua
+import ctypes
 
 def c_str(string):
     return ctypes.c_char_p(string.encode('utf-8'))

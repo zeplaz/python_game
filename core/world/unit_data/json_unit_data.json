@@ -1,0 +1,78 @@
+{
+  "Air_Units": [
+    {
+      "UNIT_NAME": "ENGINE_TEST_A",
+      "BASE_SCALE": 1,
+      "COMPONENTS": [
+        {
+          "NAME": "engine",
+          "OFFSET" : [{"x":0, "y":0}],
+          "HP": 3,
+          "TEXTURES": [
+            {
+              "DIR": "world/animationz/f16/16_engine",
+              "filename": "f16_engine_on_-sheet.png",
+              "TYPE": "SPRIT_SHEET",
+              "META": "f16_engine_on_00"
+            }
+          ]
+        }
+      ],
+      "TEXTURE_REGIONS": [
+        "engine"
+      ],
+      "MAX_SPEED": 138
+    },
+    {
+      "UNIT_NAME": "F16_A",
+      "BASE_SCALE": 1,
+      "COMPONENTS": [
+        {
+          "NAME": "engine",
+          "OFFSET" : [{"x":0, "y":-50}],
+          "HP": 3,
+          "TEXTURES": [
+            {
+              "DIR": "/animationz/f16/16_engine",
+              "filename": "f16_engine_on_-sheet.png",
+              "TYPE": "SPRIT_SHEET",
+              "META": "f16_engine_on_00"
+            }
+          ]
+        },
+        {
+          "NAME": "left_wing_base",
+          "OFFSET" : [{"x":0, "y":0}],
+          "HP": 2,
+          "TEXTURES": [
+            {
+              "DIR": "/animationz/f16/f16_leftwing",
+              "filename": "f16_leftwing_base_damage_00-sheet.png",
+              "TYPE": "SPRIT_SHEET",
+              "META": "f16_leftwing_base_damage_00"
+            }
+          ]
+        },
+        {
+          "NAME": "rutter_base",
+          "OFFSET" : [{"x":0, "y":-30}],
+          "HP": 1.5,
+          "TEXTURES": [
+            {
+              "DIR": "/animationz/f16",
+              "filename": "f16_rutter_base.png",
+              "TYPE": "SINGLE",
+              "META": "DEBUG"
+            }
+          ]
+        }
+      ],
+      "TEXTURE_REGIONS": [
+        "engine",
+        "left_wing_base",
+        "rutter_base"
+      ],
+      "MAX_SPEED": 120
+    }
+  ]
+}

@@ -4,7 +4,7 @@ save_data_on_exit = True
 save_history = True
 save_non_project_files = False
 project_type = 'empty-project-type'
-recent_files = ['main.py', 'aitests/movments.py', 'aitests/entitys.py', 'aitests/aiformations.py', 'pytestgame.py', 'animator/anima.py', 'render.py']
+recent_files = ['main.py', 'core/engine.py', 'core/world/world.py']
 
 [main]
 version = 0.2.0

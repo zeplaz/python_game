@@ -22,30 +22,50 @@ _________________________________//
 """
 import OpenGL
 import sdl2.ext as sdlext
+import sdl2 
+import core.utilityz as u 
 
-
+CLEAR_COLOUR_RGB = sdl2.ext.Color(79,98,155)
 DEF_WIN_WIDTH = 800
 DEF_WIN_HIGHT = 800
 mainname = 'SDL_TEST'
 #POINTER(SDL_Window) window
-window = None
-renderer = None
-
+#window = None
+renderer_SDL = None
+#sdl2.video.SDL_WINDOW_SHOWN 
 class render:
     def __init__(this):
-        global window
-        this.window =sdlext.Window(mainname, size=(640, 480), flags=sdl2.SDL_WINDOW_OPENGL)
-        create_sdlrender(window)
+        #global window
+        this.window =sdlext.Window(mainname, size=(DEF_WIN_WIDTH,
+DEF_WIN_HIGHT), flags=sdl2.SDL_WINDOW_OPENGL|sdl2.SDL_WINDOW_RESIZABLE)
+        this.create_sdlrender(this.window)
+        
+  #  def set_window_size(this):
+        #this.window
+    def update(this):
+        global renderer_SDL
+        this.window.refresh()
+        renderer_SDL.clear(CLEAR_COLOUR_RGB)
+        renderer_SDL.present()
+    
+    def create_sdlrender(this,win):
+        global renderer_SDL
+        renderer_SDL = sdl2.ext.Renderer(this.window,-1,None,sdl2.SDL_RENDERER_ACCELERATED)
+        #sdl2.SDL_SetRenderDrawColor(renderer_SDL,u.ctypes.c_ubyte(75),u.ctypes.c_ubyte(185),u.ctypes.c_ubyte(185),u.ctypes.c_ubyte(255))
+       
+        renderer_SDL.clear(CLEAR_COLOUR_RGB)
+        renderer_SDL.present()
 
-    def create_sdlrender(win):
-        global renderer
-        renderer = sdl2.ext.Renderer(window,-1,0)
-        sdl2.SetRenderDrawColor(renderer,ctypes.c_ubyte(75),ctypes.c_ubyte(185),ctypes.c_ubyte(185),ctypes.c_ubyte(255))
-        renderer.clear(0)
-        renderer.present()
 
-
-    def shutdown():
-        global window, renderer, running
-        sdl2.SDL_DestroyRenderer(renderer)
-        sdl2.SDL_DestoryWindow(window)
+    def shutdown(this):
+        global renderer_SDL, running
+        print("shuttingdown render")
+        sdl2.SDL_GL_DeleteContext
+        sdl2.SDL_DestroyWindow
+        sdl2.SDL_QuitSubSystem
+        del this.window
+        del renderer_SDL
+        #sdl2.SDL_DestroyRenderer(renderer_SDL)
+      #  sdlext.SDL_DestoryWindow(this.window)
+        
+        

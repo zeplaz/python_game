@@ -27,25 +27,12 @@ _________________________________//
  
 import sys
 #import aitests.movments as mov 
-import aitests.collision as phy_eng 
-
+#import aitests.collision as phy_eng 
+#import core.render as rend
+import core.engine as Eng
 stuffdats = ["losts", "lof", "stuff"]
 
-class engine:
-    def __init__(this):
-        global  shutdown_sigma
-        shutdown_sigma = False
-        
-    def loop(this):
-        global shutdown_sigma
-        
-        while not (shutdown_sigma == True):
-            for x in stuffdats:
-                print(x)
-            shutdown_sigma = True
-        else:
-            print('shutdown \n |-called closing..properly so far,,?,')
-        
+
 def test_code()-> int: 
     if len(sys.argv) > 1: 
         for data in sys.argv:
@@ -64,8 +51,7 @@ def test_code()-> int:
               i = 0 
     else:
         print("i is no longer less than 6""{}",sd)
-        meng  = engine() 
-        meng.loop()
+       
         
 if __name__ == '__main__':
     sys.exit(test_code())

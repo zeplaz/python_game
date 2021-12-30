@@ -1,0 +1,41 @@
+{ "frames": {
+   "f16_leftwing_base_damage_00 0.png": {
+    "frame": { "x": 0, "y": 0, "w": 101, "h": 101 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 101, "h": 101 },
+    "sourceSize": { "w": 101, "h": 101 },
+    "duration": 100
+   },
+   "f16_leftwing_base_damage_00 1.png": {
+    "frame": { "x": 101, "y": 0, "w": 101, "h": 101 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 101, "h": 101 },
+    "sourceSize": { "w": 101, "h": 101 },
+    "duration": 100
+   },
+   "f16_leftwing_base_damage_00 2.png": {
+    "frame": { "x": 202, "y": 0, "w": 101, "h": 101 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 101, "h": 101 },
+    "sourceSize": { "w": 101, "h": 101 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://github.com/LibreSprite/LibreSprite/",
+  "version": "1.0-dev",
+  "image": "/gitrepoz/python_game/core/world/animationz/f16/f16_leftwing/f16_leftwing_base_damage_00-sheet.png",
+  "format": "RGBA8888",
+  "size": { "w": 303, "h": 101 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "base", "opacity": 255, "blendMode": "normal" },
+   { "name": "efx", "opacity": 96, "blendMode": "multiply" }
+  ]
+ }
+}

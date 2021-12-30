@@ -1,0 +1,132 @@
+{ "frames": [
+   {
+    "filename": "f16_engine_on_01 0.png",
+    "frame": { "x": 0, "y": 0, "w": 24, "h": 27 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 27 },
+    "sourceSize": { "w": 24, "h": 27 },
+    "duration": 100
+   },
+   {
+    "filename": "f16_engine_on_01 1.png",
+    "frame": { "x": 24, "y": 0, "w": 24, "h": 27 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 27 },
+    "sourceSize": { "w": 24, "h": 27 },
+    "duration": 100
+   },
+   {
+    "filename": "f16_engine_on_01 2.png",
+    "frame": { "x": 48, "y": 0, "w": 24, "h": 27 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 27 },
+    "sourceSize": { "w": 24, "h": 27 },
+    "duration": 100
+   },
+   {
+    "filename": "f16_engine_on_01 3.png",
+    "frame": { "x": 72, "y": 0, "w": 24, "h": 27 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 27 },
+    "sourceSize": { "w": 24, "h": 27 },
+    "duration": 100
+   },
+   {
+    "filename": "f16_engine_on_01 4.png",
+    "frame": { "x": 96, "y": 0, "w": 24, "h": 27 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 27 },
+    "sourceSize": { "w": 24, "h": 27 },
+    "duration": 100
+   },
+   {
+    "filename": "f16_engine_on_01 5.png",
+    "frame": { "x": 120, "y": 0, "w": 24, "h": 27 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 27 },
+    "sourceSize": { "w": 24, "h": 27 },
+    "duration": 100
+   },
+   {
+    "filename": "f16_engine_on_01 6.png",
+    "frame": { "x": 144, "y": 0, "w": 24, "h": 27 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 27 },
+    "sourceSize": { "w": 24, "h": 27 },
+    "duration": 100
+   },
+   {
+    "filename": "f16_engine_on_01 7.png",
+    "frame": { "x": 168, "y": 0, "w": 24, "h": 27 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 27 },
+    "sourceSize": { "w": 24, "h": 27 },
+    "duration": 100
+   },
+   {
+    "filename": "f16_engine_on_01 8.png",
+    "frame": { "x": 192, "y": 0, "w": 24, "h": 27 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 27 },
+    "sourceSize": { "w": 24, "h": 27 },
+    "duration": 100
+   },
+   {
+    "filename": "f16_engine_on_01 9.png",
+    "frame": { "x": 216, "y": 0, "w": 24, "h": 27 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 27 },
+    "sourceSize": { "w": 24, "h": 27 },
+    "duration": 100
+   },
+   {
+    "filename": "f16_engine_on_01 10.png",
+    "frame": { "x": 0, "y": 27, "w": 24, "h": 27 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 27 },
+    "sourceSize": { "w": 24, "h": 27 },
+    "duration": 100
+   },
+   {
+    "filename": "f16_engine_on_01 11.png",
+    "frame": { "x": 24, "y": 27, "w": 24, "h": 27 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 27 },
+    "sourceSize": { "w": 24, "h": 27 },
+    "duration": 100
+   },
+   {
+    "filename": "f16_engine_on_01 12.png",
+    "frame": { "x": 48, "y": 27, "w": 24, "h": 27 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 27 },
+    "sourceSize": { "w": 24, "h": 27 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "https://github.com/LibreSprite/LibreSprite/",
+  "version": "1.0-dev",
+  "format": "RGBA8888",
+  "size": { "w": 240, "h": 54 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ]
+ }
+}
