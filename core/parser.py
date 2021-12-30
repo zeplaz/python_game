@@ -87,13 +87,13 @@ class sprit_sheet_parser(jason_parser):
     #def __init__(this):
        # super().__init__()
     #def create_sprit_sheet_data(this): ->
-    def load_spirtsheet_data(this, dirct,filename):
+    def load_spirtsheet_data(this, dirct, filename):
         jfile_dic = this.parse_jsonfile(dirct,filename)
 
         framlist = this.split_frames(jfile_dic['frames'])
         sheet_meta = this.split_meta(jfile_dic['meta'])
 
-        sheet_tuple = (sheet_meta,framlist)
+        sheet_tuple = wd_t.sprit_sheet(sheet_meta,framlist)
         return sheet_tuple
 
     def split_meta(this, metaz):
@@ -146,14 +146,14 @@ class sprit_sheet_parser(jason_parser):
         filename = 'f16_leftwing_base_damage_00'
         sheet_tuple  = this.load_spirtsheet_data(dir, filename)
 
-        print('\n*************metadats*********************\n')
+        print('\n*************sprit_SHeet_info*********************\n')
 
-        print(len(sheet_tuple))
-
-        metadats = sheet_tuple[META_POS]
-        for x in metadats:
-           print(type(x))
-           print(x)
+       # print("LEN:",len(sheet_tuple))
+        print("TYPE:",type(sheet_tuple))
+      # metadats = sheet_tuple[META_POS]
+       # for x in metadats:
+        #   print(type(x))
+         #  print(x)
         #print('framelist::',len(framelist))
         #for i in framelist:
         #print(framelist)

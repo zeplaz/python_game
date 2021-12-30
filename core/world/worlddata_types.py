@@ -59,7 +59,7 @@ class sprit_sheet_data :
         this.frame_dimetions = fd
 
 class sprit_sheet:
-    def __init__(spr_mt, sp_data):
+    def __init__(this,spr_mt, sp_data):
         this._sheet_data = sp_data
         this._sheet_meta = spr_mt
 
