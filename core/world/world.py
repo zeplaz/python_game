@@ -25,29 +25,38 @@ SPRIT_SCALING_RADAR_BASE = 0.5
 SPRIT_SCALING_WARHOG = 0.3
 
 
-import worlddata_types as wd_types
-import core.world.anima as Anima
-import core.physics as phy
+import core.world.worlddata_types as wd_t
+
+import core.resources as rez
+import core.world.anima as anima
+
+import sdl2
+
+#import core.world.anima as Anima
+#import core.physics as phy
 
 
 #rect = wd_types.rect
 
-class Background:
+#class Background:
 
-    def __init__(this, name):
+    #def __init__(this, name):
 
-class zone_params:
-    def __init__(this, in_rectsize, background):
-        this.rect  = in_rectsize
-        this.background =background
 
-    def add_spawn_list():
+
+class Zone_params:
+    def __init__(self, in_rectsize, background):
+        self.rect  = in_rectsize
+        self.background = background
+
+    #def add_spawn_list():
 
 
 
 class Zone:
-    def __init__(this, params):
-        this.paramz = params
+    def __init__(self, zp):
+       zone_params = zp
+        #self.paramz = params
 
 
 class World_mgmt:
@@ -57,12 +66,43 @@ class World_mgmt:
 
 class World:
     def add_zone(this,name,params):
-        newzone Zone(params)
-        this.zone_map = {name,newzone}
+        this.zone_map = {name,Zone(params)}
+
+    def load(self):
 
 
-    def __test__(this):
-        
+class world_mgmt:
+    def __init__(self,rpath,rend):
+        self.world_map = {}
+        self.world_resources = rez.Rez(rpath,rend)
+
+    def create_world(self, name, *params):
+
+
+
+        self.current_world[name]
+
+    def load_world(self, name):
+        if name in self.world_map:
+            self.current_world = self.world_map[name]
+            return
+        print("\n### ERRORworld_mgmt::_world not found:", name)
+        return
+
+    def __test__(self, path,rend):
+
+        test_world = World()
+
+      #  sdl2.c
+       # background_zp1_base =
+        zp1 = Zone_params(wd_t.Rect(x, y, 800, 800), background)
+
+        test_world.add_zone("testzone_A01", params)
+
+        world_map['test_world01',test_world]
+
+        current_world = test_world
+
 
 
 

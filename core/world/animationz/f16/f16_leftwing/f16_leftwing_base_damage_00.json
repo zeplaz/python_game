@@ -27,7 +27,7 @@
  "meta": {
   "app": "https://github.com/LibreSprite/LibreSprite/",
   "version": "1.0-dev",
-  "image": "/gitrepoz/python_game/core/world/animationz/f16/f16_leftwing/f16_leftwing_base_damage_00-sheet.png",
+  "image": "/world/animationz/f16/f16_leftwing/f16_leftwing_base_damage_00-sheet.png",
   "format": "RGBA8888",
   "size": { "w": 303, "h": 101 },
   "scale": "1",

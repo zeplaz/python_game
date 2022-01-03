@@ -32,9 +32,9 @@ import sdl2
 
 ## sorce moduals
 import core.render as rend
-#import core.world.resources as rez 
-import core.resources as rez
-
+#import core.world.resources as rez
+#import core.resources as rez
+import core.worlds.world as world_m
 # condtionals for opration
 
 run = True
@@ -52,28 +52,33 @@ ERROR_UNKNOWN = -2
 
 sigma_status = INITAL
 
-        
+
 class Engine:
     def __init__(this,start, withtests):
         global run, R_TESTS
         R_TESTS = withtests
         this.root_path = os.path.dirname(os.path.abspath(__file__))
         this._render = rend.render()
+        this.worldmgmt = world_m.World_mgmt(this.root_path,this._render)
+       
         if start is not None:
-            run = start     
+            run = start
 
         if run:
             this.__run__()
 
-    def __test__(this):
+    def __test__(self):
         print("\n ****************ENGINE)((()__TEST__())()))*******\n")
-        this.rez =  rez.Rez(this.root_path, this._render)
-        this.rez.__test__()
+      #  this.rez =  rez.Rez(this.root_path, this._render)
+       # this.rez.__test__()
         
+        self.worldmgmt.load_world('testworld_0A')
+        
+
     def __run__(this):
-        
+
         this.startup()
-        
+
         if R_TESTS:
           this.__test__()
 
@@ -88,20 +93,22 @@ class Engine:
             this.update_ai()
         else:
           print('shutdown \n |-called closing..properly so far,,?,')
-    
+
     def update_ai(this):
-        return        
+        return
 
     def render_update(this):
-        this._render.update()
+        this._render.prep()
+        
+        #this._render.draw()
 
     def handle_sdl2window_event(this, event):
         global sigma_running
         print("handling sdl2_window events")
         if event == sdl2.SDL_WINDOWEVENT_CLOSE:
             sigma_running = False
-            
-        
+
+
     def sdl_event_poll(this):
         #if sdl2.SDL_PollEvent(event)!=0:
         global events, sigma_running
@@ -109,10 +116,10 @@ class Engine:
         for event in events :
             if event.type == sdl2.SDL_QUIT:
                 sigma_running = False
-                break; 
+                break;
             if event.type == sdl2.SDL_WINDOWEVENT :
                 this.handle_sdl2window_event(event)
-                       
+
 
     def startup(this):
         print("startup")
@@ -127,4 +134,5 @@ class Engine:
         #this.rez.shutdown()
         this._render.shutdown()
         sdl2.SDL_Quit
-       
+
+    

@@ -123,7 +123,7 @@
  "meta": {
   "app": "https://github.com/LibreSprite/LibreSprite/",
   "version": "1.0-dev",
-  "image": "/gitrepoz/python_game/core/world/animationz/f16/f16_engine/f16_engine_on_00-sheet.png",
+  "image": "/world/animationz/f16/f16_engine/f16_engine_on_00-sheet.png",
   "format": "RGBA8888",
   "size": { "w": 128, "h": 81 },
   "scale": "1",

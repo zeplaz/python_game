@@ -27,6 +27,14 @@ import json
 import os
 import core.world.worlddata_types as wd_t
 
+X_POS = 0
+Y_POS = 1
+W_POS = 2
+H_POS = 3
+
+FRAME_COUNT_POS = 0
+F_D_L_POS  = 1
+
 META_POS  = 0
 FRAMEZ_POS = 1
 
@@ -70,7 +78,6 @@ class game_data_parser(jason_parser):
         return jfile_dic["Air_Units"]
 
 
-
     def __test__(this, rootp):
         dir = rootp + '/world/unit_data'
         filename = 'json_unit_data'
@@ -90,14 +97,14 @@ class sprit_sheet_parser(jason_parser):
     def load_spirtsheet_data(this, dirct, filename):
         jfile_dic = this.parse_jsonfile(dirct,filename)
 
-        framlist = this.split_frames(jfile_dic['frames'])
+        fram_tuple = this.split_frames(jfile_dic['frames'])
         sheet_meta = this.split_meta(jfile_dic['meta'])
 
-        sheet_tuple = wd_t.sprit_sheet(sheet_meta,framlist)
-        return sheet_tuple
+        sheet = wd_t.sprit_sheet(fram_tuple[FRAME_COUNT_POS],fram_tuple[F_D_L_POS],sheet_meta)
+        return sheet
 
     def split_meta(this, metaz):
-        print('\n theobjecttype of metaz::', type(metaz), "\n***\n")
+      #  print('\n theobjecttype of metaz::', type(metaz), "\n***\n")
         flist     = list(metaz.keys())
 
         sheet_size_dict = metaz['size']
@@ -110,13 +117,14 @@ class sprit_sheet_parser(jason_parser):
 
         return sm
 
-    def split_frames(this, framez):
+    def split_frames(this, framez): #-> list
 
-        print('\n theobjecttype of framez::', type(framez), "\n***\n")
+        #print('\n theobjecttype of framez::', type(framez), "\n***\n")
         #print('n/##+fullframe',framez)
         flist = list(framez.keys())
         spfame_list= []
-
+    #    dictary_map = {"keyword": 5.4}
+       # frame_tuple = (0,spfame_list)
         count = 0
         for i in flist:
         #    print('\n |**********************|\n #->framez::Ikey::', i)
@@ -124,15 +132,20 @@ class sprit_sheet_parser(jason_parser):
             frame_data = framez[i]
             #inner_keys = list(frame_data.keys())
             frame_dimetions = frame_data['frame']
+            
+         #   print("#framertunr type::", type(frame_dimetions['x']))
             f_d = wd_t.Rect(frame_dimetions['x'],frame_dimetions['y'],frame_dimetions['w'],frame_dimetions['h'])
+          #  print("####___>>>>rect.frame_d in splitframe:",f_d[0],f_d[1],f_d[2],f_d[3])
+           # print("###########_---->>> raw:frame_dimetions", frame_dimetions['x'],frame_dimetions['y'],frame_dimetions['w'],frame_dimetions['h'])
             sprit_size_dict = frame_data['sourceSize']
             sprit_size = wd_t.np.array([sprit_size_dict['w'],sprit_size_dict['h']])
 
 
-        spfame_list.append(wd_t.sprit_sheet_data(i,count,f_d,sprit_size))
-
-        print('listlength::',len(spfame_list))
-        return spfame_list
+        spfame_list.append(wd_t.sprit_frame_data(i,f_d,sprit_size))
+        frame_tuple = (count,spfame_list)
+      #  frame_tuple[1] =
+    #    print('listlength::',len(spfame_list))
+        return frame_tuple
         #frame_list = []
 
 
@@ -140,17 +153,30 @@ class sprit_sheet_parser(jason_parser):
 
         dir = rootp + '/world/animationz/f16/f16_engine/'
         filename = 'f16_engine_on_00'
-        sheet_tuple  = this.load_spirtsheet_data(dir, filename)
+        sheet_test  = this.load_spirtsheet_data(dir, filename)
+
 
         dir = rootp + '/world/animationz/f16/f16_leftwing'
         filename = 'f16_leftwing_base_damage_00'
-        sheet_tuple  = this.load_spirtsheet_data(dir, filename)
+        sheet_test  = this.load_spirtsheet_data(dir, filename)
 
         print('\n*************sprit_SHeet_info*********************\n')
+        print("::sheet_test::TYPE:",type(sheet_test))
+        print("::sheet_test._sheet_dat::TYPE:",type(sheet_test._sheet_frame_list))
+        print("::sheet_test.frame_count::TYPE:",type(sheet_test.frame_count))
 
-       # print("LEN:",len(sheet_tuple))
-        print("TYPE:",type(sheet_tuple))
-      # metadats = sheet_tuple[META_POS]
+
+        print(":meta:image path::",sheet_test._sheet_meta.path_image)
+        print(":meta:sheet_size::",sheet_test._sheet_meta.sheet_size)
+        print("Sritesheet:frame_count::",sheet_test.frame_count)
+        print(":sheet_dat:frameD-W_POS::",sheet_test._sheet_frame_list[0].frame_dimetions[W_POS])
+
+
+
+    """
+    #############****OLD TESTZ######*****
+    # print("LEN:",len(sheet_tuple))
+    # metadats = sheet_tuple[META_POS]
        # for x in metadats:
         #   print(type(x))
          #  print(x)
@@ -160,3 +186,4 @@ class sprit_sheet_parser(jason_parser):
 
        # this.print_raw(jsonfile)
         #Sthis.print_use_key('frames',jsonfile)
+    """
