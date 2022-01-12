@@ -11,27 +11,29 @@ movments.py
 ##########################
 
 ##########################
-|*  -> 
+|*  ->
 ##########################
 ________________________________
 @USAGE
 ::valid FOR:: MIT - UNLESS OTHERWISE OVERWRITTEN
+ian ai for games, book was used in creating this
 
 _________________________________//
 ##################################
 """
 
 
+
+
 class Kinematic:
     def __init__(this):
-        this.somthing
+        pass
+
     def update(this,steering_out,max_sp,dt):
             this.pos += velocity*dt
-            this.orienation = rotation*time
-            steering_out.linear*time
-            steering_out.angular*time
-             
-
+            this.orienation = rotation*dt
+            steering_out.linear*dt
+            steering_out.angular*dt
 
 
 class Postion :
@@ -48,7 +50,7 @@ class Orienation :
 
 class Align:
     def __init__(this):
-        this.something
+        pass
 
 class Look_where_your_going(Align):
     def __init__(this):
@@ -63,7 +65,7 @@ class Face(Align):
 ####___________Seek_Flee_______
 class Seek_Flee:
     def __init__(this):
-        this.something
+        pass
 
 class Wander(Seek_Flee):
     def __init__(this):
@@ -84,22 +86,22 @@ class Path_following(Seek_Flee):
 
 class Velocity_match:
     def __init__(this):
-        this.somthing
+        pass
 
 class Arrive(Velocity_match):
     def __init__(this):
-        this.somthing
+        pass
 
 ##___VELOCITY_MATCH__FIN___
 
 ###___FORCE_FEILD_____
 class Force_feild:
     def __init__(this):
-        this.somthing
+        pass
 
 class Seperation(Force_feild):
     def __init__(this):
-        this.somthing
+        pass
 
 
 ##___FORCE_FEILD_____FIN___

@@ -11,7 +11,7 @@ world.py
 ##########################
 
 ##########################
-|*  -> 
+|*  ->
 ##########################
 ________________________________
 @USAGE
@@ -68,8 +68,9 @@ class world_mgmt:
         self.load_world(next_world)
         self.current_world = self.world_map[name]
 
-    def __test__(self, path, rend):
-        test_world = World()
+    def __test__(self, path, rend, testname):
+
+        test_world = World(testname)
 
         #  sdl2.c
         # background_zp1_base =

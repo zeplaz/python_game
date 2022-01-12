@@ -58,10 +58,10 @@ nima_types = {
         }
 
 
-# for Que if que is - this means "run infinently till disabeld or destroeyd"
+# for Que if que is nrgitve - this means "run infinently till disabeld or destroeyd"
 class Spawner:
-    def __init__(self):
-        self.pos        = wd_t.Vector(0, 0)
+    def __init__(self, pos):
+        self.pos        = pos
         self.active     = False
         self.alive      = True
         self.que        = 0
@@ -69,13 +69,47 @@ class Spawner:
         self.cooldown   = 100
         self.spwan_list = []
 
+    def configure(self, **params):
+
+        if params.has_key('rate'):
+            self.rate     = params[rate]
+        if params.has_key('cooldown'):
+            self.cooldown = params[cooldown]
+        if params.has_key('que'):
+            self.que      = params[cooldown]
+
+    def __call__(self, dt):
+
+        if self.active = False:
+            return None
+
+        clean_spawnList()
+
+        if self.que = 0:
+            return 'EMPTY'
+        if not cooldown_passed(dt):
+            return 'UNCOOL'
+        else:
+            return (que,spawn_list)
+
+    def activate_spawner(self):
+        self.active = True
+
+    def deactivate_spawner(self):
+        self.active = False
+
+    def request_a_spawn():
+        que += 1
+
     def add_spawnable(self, sge):
         self.spwan_list.append(sge)
+
 
     def clean_spawnList (self):
         for sp in self.spawn_list:
             if sp.alive is False:
                 self.spwan_list.remove(sp)
+
 
     def cooldown_passed(self, tick):
         if self.cooldown%tick == 0:

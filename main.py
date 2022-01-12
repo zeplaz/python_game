@@ -10,8 +10,8 @@ Main
 
 ##########################
 |*  ->currently::config for a test world
-|* engine is instanced  and __run__() of the engine is called. 
-. output errors, depend on debug mode. 
+|* engine is instanced  and __run__() of the engine is called.
+. output errors, depend on debug mode.
 ##########################
 ________________________________
 @USAGE
@@ -21,11 +21,11 @@ ________________________________
 
 |/**command line commands**\|
 start     == (will cause engine to execute __run__ in the init)
-R_tests   == (will set the engine to run all default tests) 
+R_tests   == (will set the engine to run all default tests)
 
 #||goto-->
-core.engine:: 
-the inputs to determine engine startup configurations 
+core.engine::
+the inputs to determine engine startup configurations
 
 _________________________________//
 ##################################
@@ -34,20 +34,20 @@ import sys
 
 import core.engine as Eng
 
+DEFUALT_TESTS_RUN = True 
+DEFAULT_START     = False 
+ 
 
 def main():
-   # pygame.init()
-#caputre argments.
-    def_start = False
-    run_tests = True
-   
-    eng = Eng.Engine(def_start,run_tests)
-     
+
+   if (len(sys.argv) > 1):
+      eng = Eng.Engine(sys.argv)
+   else :
+      eng = Eng.Engine()   
     eng.__run__()
-    eng.loop()
-    
+
     eng.shutdown()
-    
+
     print("###30##")
     return 0
 

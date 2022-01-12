@@ -112,11 +112,13 @@ class Engine:
 
     def __test__(self):
         print("\n ****************ENGINE)((()__TEST__())()))*******\n")
-      #  this.rez =  rez.Rez(this.root_path, this._render)
-       # this.rez.__test__()
-        
-        self.worldmgmt.load_a_world('testworld_0A')
-        
+
+        #this.rez =  rez.Rez(this.root_path, this._render)
+        #this.rez.__test__()
+        self.worldmgmt.__test__(this.root_path ,this._render, 'testworld_0A')         
+
+
+
 
     def __run__(this):
         global run
@@ -128,7 +130,6 @@ class Engine:
         if run == True:
             this.loop()
 
-       #rend.window.show()
 
     def loop(this):
         global sigma_running, sigma_status
@@ -209,5 +210,3 @@ class Engine:
         #this.rez.shutdown()
         this._render.shutdown()
         sdl2.SDL_Quit()
-
-    

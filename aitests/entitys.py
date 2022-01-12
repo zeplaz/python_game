@@ -22,6 +22,18 @@ _________________________________//
 ##################################
 """
 
+#untill the proper mvoment algurthsm are finshed. in physics, well just hanlde it here
+class move_algurthm:
+    def __call__(**kwargs):
+
+    if 'velocity' in kwargs:
+        return kwargs['velocity']*dt
+    if 'force' in kwargs:
+        return kwargs['force']*dt
+    if 'rotation' in kwargs:
+        return kwargs['rotation']*dt
+
+    return None
 
 class Counter():
     count = 0
@@ -57,7 +69,10 @@ class Caracter(Entity):
         this.orientaion = in_or
 
     def move_request_velocity(this, new_vel):
-        this.pos = move_algurthm(new_vel)
+        this.pos = move_algurthm('velocity',new_vel)
 
     def move_request_force_plus(this, new_force):
-        this.pos = move_algurthm(new_force)
+        this.pos = move_algurthm('force',new_force)
+
+    def orientaion_update():
+        this.orientaion  = move_algurthm('orientation')

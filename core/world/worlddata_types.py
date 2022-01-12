@@ -11,7 +11,7 @@ worlddata_types.py
 ##########################
 
 ##########################
-|*  -> 
+|*  ->
 ##########################
 ________________________________
 @USAGE
@@ -22,7 +22,7 @@ _________________________________//
 """
 
 import numpy as np
-import ctypes 
+import ctypes
 #from typing import List, NamedTuple, Tuple, Union, Sequence
 import sdl2
 #Vector = Union[Tuple[float,float], List[float],np.array([float,float])]
@@ -35,12 +35,35 @@ sheet_data_map = []
 RGBA8888 = 'RGBA8888'
 
 class Vector():
+
     def __init__(self,x,y):
         self._xy = np.array([x,y])
 
     def __getitem__(self, index):
        # print ('\n REcT::__getitem__', type(items), items)
        return self._xy[index]
+    def magnitude():
+        return np.sqrt(self._xy.dot(self._xy))
+
+    def __mul__(self, other):
+        #self._xy[0]*= other._xy[0]
+    #    self.Y     *= other.Y
+        return np.multiply(self._xy,other._xy)
+
+    def __sub__(self, other):
+        return np.subtract(self_xy,other._xy)
+
+    def __add__(self, other):
+        return np.add(self_xy,other._xy)
+
+    def __LT__(self, other):
+         return np.sqrt(self._xy.dot(self._xy)) <  np.sqrt(other._xy.dot(other._xy))
+
+    def __GT__(self,other):
+        return np.sqrt(self._xy.dot(self._xy)) >  np.sqrt(other._xy.dot(other._xy))
+
+    def __IMUL__(self,other):
+        self._zy = self._xy * other._xy
 
     @property
     def xy(self):
@@ -113,15 +136,15 @@ class sprit_sheet_comp:
         self._current_frame(0,0, fs.X,fs.Y)
 
 
-class create_compent(): 
+class create_compent():
     def __init__(self, name, *params):
-        
+
         if name == 'sprit_sheet':
             for pr in params:
                 self.frame_size = pr
                 self._current_frame(0,0, pr.X,pr.Y)
-                
-                
+
+
         return self
 
 
@@ -129,13 +152,13 @@ class Layer:
     def __init__(self, rt, a):
        self.texture = rt
        self.alpha = a
-       
+
 class Background_texture:
     def __init__(self, *params):
         self.layers = []
-        for pr in params: 
+        for pr in params:
             self.layers.append(pr)
-    
+
 class Renderable_texture:
     def __init__(self, texture, pos, r_type, *params):
         self.texture = texture
@@ -143,7 +166,7 @@ class Renderable_texture:
         self.r_type = r_type
         self.texture_dimestion = self.sdl_querry_texture_dimesions(texture)
         self.componets = {}
-        
+
         if r_type == 'sprit_sheet':
             for fs in params:
                 self.frame_size = fs
@@ -151,17 +174,17 @@ class Renderable_texture:
             """
             for key, comp in comps.items():
                 self.componets[key] =  create_compent(key,comp)
-                """  
+                """
         if r_type == 'base_texture':
             self.frame_size = self.texture_dimestion
             self._current_frame(0,0, self.frame_size.X,self.frame_size.Y)
-        
-        if r_type == 'background_texture':               
+
+        if r_type == 'background_texture':
            self.frame_size = self.texture_dimestion
            self._current_frame(0,0, self.frame_size.X,self.frame_size.Y)
            self.layers = []
-           for pr in params: 
-               self.layers.append(pr)       
+           for pr in params:
+               self.layers.append(pr)
 
     def sdl_querry_texture_dimesions(self, texture):
         w =  ctypes.c_int()
@@ -180,11 +203,11 @@ class Renderable_texture:
     @property
     def current_frame(self):
         return self._current_frame
-    
+
     @current_frame.setter
     def current_frame(self,x,y,w,h):
         self._current_frame = sdl2.SDL_Rect(x,y,w,h)
-    
+
     def set_current_frame(self,cf):
         self.current_frame = cf
 
@@ -192,7 +215,7 @@ class Renderable_texture:
 class Renderable_sheet_sprit(Renderable_texture):
         def __init__(self,tex,pos, fs):
             super().__init__(self,tex,pos,'sprit_sheet')
-           
+
 """
 
 class Frame_dimetions:

@@ -79,7 +79,7 @@ class world_config:
 """
 |*==================================================================
 |*                          Test_World0A
-|*              - hardcoded sample test configuration data for a world and its participants. 
+|*              - hardcoded sample test configuration data for a world and its participants.
 |*    @ for world configure test.
 |*==================================================================
 """
@@ -103,43 +103,51 @@ Background00_texture_path = 'world/worldz_data/background_resttest.png'
 |*==================================================================
 """
 
+"""
+|*started Fixed locations
+"""
 
-f16A0eng_Pos    = wd_t.Vector(100, 100)
+sp_A1_Pos        = wd_t.Vector(560, 300)
+sp_A1_HRegon_00    = anima_t.Hitbox_region(-5,-7,4,5)
+sp_A1_HPR_00       = 4
+sp_A1_DS_STAT_00   = anima_t.Damage_state(spA1_HRegon_00,spA1_HPR_00)
 
-spA1_Pos        = wd_t.Vector(560, 300)
 
-spPlayer01_Pos = wd_t.Vector(30, 75)
+"""
+ give player a start location or, create the player spwaner.
+ required parmaters are hitbox_region, HP. which will initalze damge_state and the anima type
+"""
 
-spA1_HRegon_00    = anima_t.Hitbox_region(-5,-7,4,5)
-spA1_HPR_00       = 4
-spA1_DS_STAT_00   = anima_t.Damage_state(spA1_HRegon_00,spA1_HPR_00)
+# Default player start info
 
+sp_Player01_Pos  = wd_t.Vector(30, 75)
 
 PL01_HR_00        = anima_t.Hitbox_region(-3,-2,3,1)
 PL01_HPR_00       = 5
 PL01_DS_STAT_00   = anima_t.Damage_state(PL01_HR_00,PL01_HPR_00)
+spA1_Anima01       = anima_t.Anima(spA1_Pos,anima_t.Anima_Type.SPAWNER_,spA1_DS_STAT_00)
 
+# f16 engine test starting info
+
+f16A01ENG_Pos_00       = wd_t.Vector(100, 100)
 F16A01ENG_HR_00        = anima_t.Hitbox_region(-3,-2,3,1)
 F16A01ENG_HPR_00       = 5
 F16A01ENG_DS_STAT_00   = anima_t.Damage_state(F16A01ENG_HR_00,F16A01ENG_HPR_00)
-
-
-
-#test_world_backroung_01A = Background
-
-
-
 f16a01ENG_Anima01  = anima_t.Anima(f16A0eng_Pos,'F16_ENGINE_TEST',F16A01ENG_DS_STAT_00)
-
-f16a01ENG_Anima01.add_texture()
-
-gen01_Anima01      = anima_t.Anima(spA1_Pos,'generator_',spA1_DS_STAT_00)
-spA1_Anima01       = anima_t.Anima(spA1_Pos,anima_t.Anima_Type.SPAWNER_,spA1_DS_STAT_00)
-pl01_Anima01       = anima_t.Anima(spPlayer01_Pos,anima_t.Anima_Type.PLAYER_01,PL01_DS_STAT_00)
-#anima_t.Anima(spA1_Pos,'SPWANER_',spA1_DS_STAT_00)
 
 
 
 spawner_A1     = anima_t.Spawner()
-
 spwaner_player = anima_t.Spawner()
+
+"""
+f16A0_01_Pos       = wd_t.Vector(3,2)
+f16a01ENG_Anima01.add_texture()
+
+
+
+gen01_Anima01      = anima_t.Anima(spA1_Pos,'generator_',spA1_DS_STAT_00)
+pl01_Anima01       = anima_t.Anima(spPlayer01_Pos,anima_t.Anima_Type.PLAYER_01,PL01_DS_STAT_00)
+#anima_t.Anima(spA1_Pos,'SPWANER_',spA1_DS_STAT_00)
+
+"""
