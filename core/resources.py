@@ -44,13 +44,16 @@ class Rez:
         this.path_map = {}
         this.unit_map = {}
         this.sprit_sheet_map = {}
+        this.texture_map = {}
+
+
         this.path_map["root_path"]  = rpath
         this.path_map["world_path"] = os.path.join(rpath, "/world")
         this.path_map["unit_data"]  = os.path.join(rpath, "/world/unit_data")
         this.path_map["animationz"] = os.path.join(rpath, "/world/animationz")
         #this.path_map["unit_data"]  = os.path.join(rpath, "/core/world/unit_data")
 
-       # this.texture_spirt_factory  = TextureRenderSystem(rend)
+        this.texture_spirt_factory  = TextureRenderSystem(rend)
         this.texture_spirt_factory = wd_t.sdl2.ext.SpriteFactory(wd_t.sdl2.ext.TEXTURE, renderer=rend.renderer_SDL)
 
         this.AnimaZ_RESOURCES_SDL = wd_t.sdl2.ext.Resources(__file__, rpath+"/world/animationz")
@@ -105,10 +108,12 @@ class Rez:
 
         this.unit_map[name] = spshet
 
-            # Create sprite factory to create surfaces with later
-            # Determine path to image to use as texture
+
             
-            
+    def create_add_texture(self, filepath,name, ttype):
+        self.texture_map[name] =(ttype, self.texture_spirt_factory.from_image(self.path_map["root_path"] + filepath))
+
+
     def __test__(this):
         print("\n**********REZ_TEST*****((((((((((())))))))))))")
 

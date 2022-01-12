@@ -1,25 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-_*******************************
-Thu Dec 23 01:11:45 2021
-_
-@-created by :_zeplaz's
-
+_*****************************
+@author: matthew
+##########################
+"""
+"""
+##########################
+worlddata_types.py
+##########################
 
 ##########################
-worlddata_types
-
+|*  -> 
 ##########################
 ________________________________
-@USSAGE
-::vaild FOR:: MIT - UNLESS OTHERWISE OVERWTITEN
-
-
+@USAGE
+::valid FOR:: MIT - UNLESS OTHERWISE OVERWRITTEN
 
 _________________________________//
 ##################################
 """
+
 import numpy as np
 import ctypes 
 #from typing import List, NamedTuple, Tuple, Union, Sequence

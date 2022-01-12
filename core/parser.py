@@ -1,28 +1,28 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-_*******************************
-Thu Dec 23 01:36:20 2021
-_
-@-created by :_zeplaz's
-
+_*****************************
+@author: matthew
+##########################
+"""
+"""
+##########################
+parser.py
+##########################
 
 ##########################
-utilityz.py
-
+|*  -> 
 ##########################
 ________________________________
-@USSAGE
-::vaild FOR:: MIT - UNLESS OTHERWISE OVERWTITEN
-
+@USAGE
+::valid FOR:: MIT - UNLESS OTHERWISE OVERWRITTEN
 parsers for game data and metadates
 including
 jason_parser: for handling json files
 ->currently handlily spritsheet data files
- _________________________________//
+_________________________________//
 ##################################
 """
-
 import json
 import os
 import core.world.worlddata_types as wd_t

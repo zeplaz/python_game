@@ -1,24 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-_*******************************
-%(date)s
-_
-@-created by :_zeplaz's
-
-
+_*****************************
+@author: matthew
+##########################
+"""
+"""
+##########################
+movments.py
 ##########################
 
-movments.py
-
+##########################
+|*  -> 
 ##########################
 ________________________________
-@USSAGE
-::vaild FOR:: MIT - UNLESS OTHERWISE OVERWTITEN
+@USAGE
+::valid FOR:: MIT - UNLESS OTHERWISE OVERWRITTEN
 
 _________________________________//
 ##################################
 """
+
 
 class Kinematic:
     def __init__(this):

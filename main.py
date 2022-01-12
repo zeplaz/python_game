@@ -1,9 +1,34 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Mon Dec 13 01:04:25 2021
-
 @author: matthew
+"""
+"""
+##########################
+Main
+##########################
+
+##########################
+|*  ->currently::config for a test world
+|* engine is instanced  and __run__() of the engine is called. 
+. output errors, depend on debug mode. 
+##########################
+________________________________
+@USAGE
+::valid FOR:: MIT - UNLESS OTHERWISE OVERWRITTEN
+:::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+|/**command line commands**\|
+start     == (will cause engine to execute __run__ in the init)
+R_tests   == (will set the engine to run all default tests) 
+
+#||goto-->
+core.engine:: 
+the inputs to determine engine startup configurations 
+
+_________________________________//
+##################################
 """
 import sys
 

@@ -1,27 +1,31 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-_*******************************
-Thu Dec 23 01:11:45 2021
-_
-@-created by :_zeplaz's
-
-
+_*****************************
+@author: matthew
+##########################
+"""
+"""
+##########################
+anima.py
 ##########################
 
-
+##########################
+|*  ->
 ##########################
 ________________________________
-@USSAGE
-::vaild FOR:: MIT - UNLESS OTHERWISE OVERWTITEN
-
+@USAGE
+::valid FOR:: MIT - UNLESS OTHERWISE OVERWRITTEN
 
 
 _________________________________//
 ##################################
 """
-#import os
+
+
 from enum import Enum
+#import os
+
 
 #import core.parser as pars
 import core.world.worlddata_types as wd_t

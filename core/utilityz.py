@@ -1,24 +1,29 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-_*******************************
-Thu Dec 23 01:36:20 2021
-_
-@-created by :_zeplaz's
-
+_*****************************
+@author: matthew
+##########################
+"""
+"""
+##########################
+anima.py
+##########################
 
 ##########################
-utilityz.py
-
+|*  ->
 ##########################
 ________________________________
-@USSAGE
-::vaild FOR:: MIT - UNLESS OTHERWISE OVERWTITEN
+@USAGE
+::valid FOR:: MIT - UNLESS OTHERWISE OVERWRITTEN
 
-useful small genreal utiltiys for the engine
+useful small general utiltiys for the engine
 _________________________________//
 ##################################
+
 """
+
+
 ##xore modua
 import ctypes
 

@@ -1,33 +1,28 @@
-
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-_*******************************
-Sat Dec 18 23:23:00 2021
-_
-@-created by :_zeplaz's
-
-
+_*****************************
+@author: matthew
+##########################
+"""
+"""
+##########################
+entitiys.py
 ##########################
 
-
+##########################
+|*  ->
 ##########################
 ________________________________
-@USSAGE
-::vaild FOR:: MIT - UNLESS OTHERWISE OVERWTITEN
-
+@USAGE
+::valid FOR:: MIT - UNLESS OTHERWISE OVERWRITTEN
 
 
 _________________________________//
 ##################################
 """
 
-"""
-#
 
-SDL_EventType
-
-"""
 class Counter():
     count = 0
     @staticmethod #here

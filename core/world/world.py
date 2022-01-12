@@ -1,116 +1,100 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-_*******************************
-Thu Dec 23 01:11:45 2021
-_
-@-created by :_zeplaz's
-
+_*****************************
+@author: matthew
+##########################
+"""
+"""
+##########################
+world.py
+##########################
 
 ##########################
-world
-
+|*  -> 
 ##########################
 ________________________________
-@USSAGE
-::vaild FOR:: MIT - UNLESS OTHERWISE OVERWTITEN
+@USAGE
+::valid FOR:: MIT - UNLESS OTHERWISE OVERWRITTEN
 
 _________________________________//
 ##################################
 """
-SPRITE_SCALING_BASE = 0.25
-SPRIT_SCALING_F16_BASE = 0.2
-SPRIT_SCALING_SAM_BASE = 0.5
-SPRIT_SCALING_RADAR_BASE = 0.5
-SPRIT_SCALING_WARHOG = 0.3
 
 
-import core.world.worlddata_types as wd_t
-
-import core.resources as rez
-import core.world.anima as anima
-
-import sdl2
-
-#import core.world.anima as Anima
-#import core.physics as phy
-
-
-#rect = wd_types.rect
-
-#class Background:
-
-    #def __init__(this, name):
-
-
-
-class Zone_params:
-    def __init__(self, in_rectsize, background):
-        self.rect  = in_rectsize
-        self.background = background
-
-    #def add_spawn_list():
-
-
-
-class Zone:
-    def __init__(self, zp):
-       zone_params = zp
-        #self.paramz = params
-
-
-class World_mgmt:
-    def load_a_world(this, toload):
-        world =World()
-        return world
-
-class World:
-    def add_zone(this,name,params):
-        this.zone_map = {name,Zone(params)}
-
-    def load(self):
-
+import core.world.worldz_data.world_config as w_config
 
 class world_mgmt:
-    def __init__(self,rpath,rend):
-        self.world_map = {}
-        self.world_resources = rez.Rez(rpath,rend)
+    def __init__(self):
+        self._flag_load_next_world = False
+        self.current_world         = None
+        self.next_world            = None
+        self.world_map             = {}
+        self.world_configurer      = w_config.world_config()
+
+    @property
+    def next_world_flag(self):
+        return self._flag_load_next_world
+
+    @next_world_flag.setter
+    def load_next_world(self):
+        self._flag_load_next_world = True
 
     def create_world(self, name, *params):
 
-
-
-        self.current_world[name]
+        if name in self.world_map:
+            return self.world_map[name]
+        else :
+            self.world_map[name] = self.world_configurer(params)
 
     def load_world(self, name):
         if name in self.world_map:
-            self.current_world = self.world_map[name]
-            return
-        print("\n### ERRORworld_mgmt::_world not found:", name)
+            self.next_world_flag == True
+            self.next_world = self.world_map[name]
+
+        else:
+            self.next_world_flag = False
+            print("\n### ->ERRORworld_mgmt::_world not found in world_map:", name)
+            print("\n ##ERROR:: the world must exist to be loaded  first run create_world(name,*params),",
+                  "\n fyi:you will remain in current world\n")
+
         return
 
-    def __test__(self, path,rend):
+    def update_realms(self):
+        if self.next_world_flag == True:
+            self.current_world = self.world_map[name]
+        # get the new world to load
+        # instanste the world. and return it.
+        self.load_world(next_world)
+        self.current_world = self.world_map[name]
 
+    def __test__(self, path, rend):
         test_world = World()
 
-      #  sdl2.c
-       # background_zp1_base =
-        zp1 = Zone_params(wd_t.Rect(x, y, 800, 800), background)
+        #  sdl2.c
+        # background_zp1_base =
+        zp1 = Zone_params(wd_t.Rect(x, y, 800, 800), )
 
         test_world.add_zone("testzone_A01", params)
 
-        world_map['test_world01',test_world]
+        self.world_map['test_world01', test_world]
 
         current_world = test_world
 
+    self.world_resources = rez.Rez(rpath, rend)
+    # def draw_lists(this):
+    #   this.air_list.draw()
+
+    # air_hit_list = .check_for_collision_with_list()
+
+    # for airunit in air_hit_list:
+    #   airunit.update_damage()
 
 
+# rect = wd_types.rect
 
-    #def draw_lists(this):
-     #   this.air_list.draw()
+# class Background:
 
-    #air_hit_list = .check_for_collision_with_list()
+# def __init__(this, name):
 
-
-    #for airunit in air_hit_list:
-     #   airunit.update_damage()
+    # def add_spawn_list():
