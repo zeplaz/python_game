@@ -202,9 +202,13 @@ class Rect():
 
 
 class Align:
-    def __init__(self, char_k, D_o, **alin_params):
+
+    def __call__(self,char_k, D_o ):
         self.character = char_k
         self.destination_obktive = D_o
+        return self.get_steering()
+
+    def __init__(self,**alin_params ):
 
         self.max_angular_acceleration = alin_params['max_ang_accel']
         self.max_rotation      =        alin_params['max_rot']
@@ -232,10 +236,17 @@ class Face(Align):
 ####___________Seek_Flee_______
 
 class Seek_Flee:
-    def __init__(self, char_Kin, Ds_O, max_accel):
+    def __call__(self,char_Kin, Ds_O , accel_override)  -> Steering_out:
         self.character = char_Kin
         self.destination_obktive = Ds_O
+
+        if accel_override is None:
+            return self.get_steering()
+        else :
+            return self.get_steering(accel_override)
+    def __init__(self, max_accel):
         self.max_acceleration = max_accel
+
 
     def get_steering(self, accel_override) -> Steering_out:
         out_linear  = self.destination_obktive.pos - self.character.pos
@@ -246,7 +257,6 @@ class Seek_Flee:
         out_linear *= self.max_acceleration
         out_angular = 0
         return Steering_out(out_linear, out_angular)
-
 
 
 

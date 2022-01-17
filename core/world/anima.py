@@ -22,9 +22,6 @@ _________________________________//
 ##################################
 """
 
-
-
-
 from enum import Enum
 
 ####import os
@@ -81,6 +78,8 @@ class Depolyable_game_enity(mov.phy_Character):
         steering_b = behavour_steering
         #self.pos = pos #wd_t.Vector(0, 0)
         self._damage_stat = None
+    def update_steering(self):
+      ster_out  =  self.steering_b.get_steering()
 
     @property
     def damage_stat(self):
