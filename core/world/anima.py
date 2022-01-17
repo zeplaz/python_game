@@ -23,12 +23,19 @@ _________________________________//
 """
 
 
+
+
 from enum import Enum
-#import os
+
+####import os
+import sys
 
 
 #import core.parser as pars
+
 import core.world.worlddata_types as wd_t
+
+import core.physics.movments as mov
 #import core.render as rend
 
 
@@ -57,67 +64,6 @@ nima_types = {
         'SPAWNER_'        :405
         }
 
-
-# for Que if que is nrgitve - this means "run infinently till disabeld or destroeyd"
-class Spawner:
-    def __init__(self, pos):
-        self.pos        = pos
-        self.active     = False
-        self.alive      = True
-        self.que        = 0
-        self.rate       = 1
-        self.cooldown   = 100
-        self.spwan_list = []
-
-    def configure(self, **params):
-
-        if params.has_key('rate'):
-            self.rate     = params[rate]
-        if params.has_key('cooldown'):
-            self.cooldown = params[cooldown]
-        if params.has_key('que'):
-            self.que      = params[cooldown]
-
-    def __call__(self, dt):
-
-        if self.active = False:
-            return None
-
-        clean_spawnList()
-
-        if self.que = 0:
-            return 'EMPTY'
-        if not cooldown_passed(dt):
-            return 'UNCOOL'
-        else:
-            return (que,spawn_list)
-
-    def activate_spawner(self):
-        self.active = True
-
-    def deactivate_spawner(self):
-        self.active = False
-
-    def request_a_spawn():
-        que += 1
-
-    def add_spawnable(self, sge):
-        self.spwan_list.append(sge)
-
-
-    def clean_spawnList (self):
-        for sp in self.spawn_list:
-            if sp.alive is False:
-                self.spwan_list.remove(sp)
-
-
-    def cooldown_passed(self, tick):
-        if self.cooldown%tick == 0:
-            return True
-        return False
-
-
-
 class Hitbox_region:
     def __init__(self,x,y,w,h):
         self.rect = wd_t.Rect(x,y,w,h)
@@ -128,10 +74,13 @@ class Damage_state:
         this.Hitbox_regions = hitbox_reg
         this.HP = hp
 
-class Depolyable_game_enity:
-    def __init__(self,pos,ds):
-        self.pos = pos #wd_t.Vector(0, 0)
-        self._damage_stat = ds
+
+class Depolyable_game_enity(mov.phy_Character):
+    def __init__(self,pos,behavour_steering):
+        super().__init__(pos)
+        steering_b = behavour_steering
+        #self.pos = pos #wd_t.Vector(0, 0)
+        self._damage_stat = None
 
     @property
     def damage_stat(self):
@@ -152,6 +101,68 @@ class Anima(Depolyable_game_enity):
 
     def add_texture(self,base_texture, pos, r_type, *params):
         self.texture = wd_t.Renderable_texture(base_texture, pos, r_type, params)
+
+
+# for Que if que is nrgitve - this means "run infinently till disabeld or destroeyd"
+
+class Spawner(Anima):
+    def __init__(self, pos, Damg_stat):
+        super(Spawner, self).__init__(pos,Damg_stat)
+
+        #ds lookup
+        self.active     = False
+        self.alive      = True
+        self.que        = 0
+        self.rate       = 1
+        self.cooldown   = 100
+        self.spwan_list = []
+
+    def configure(self, **params):
+
+        if params.has_key('rate'):
+            self.rate     = params['rate']
+        if params.has_key('cooldown'):
+            self.cooldown = params['cooldown']
+        if params.has_key('que'):
+            self.que      = params['que']
+
+    def __call__(self, dt):
+
+        if self.active == False:
+            return None
+        #clean_spawnList()
+        if self.que = 0:
+            return 'EMPTY'
+        if not cooldown_passed(dt):
+            return 'UNCOOL'
+        else:
+            return #(que,spawn_list)
+
+    def activate_spawner(self):
+        self.active = True
+
+    def deactivate_spawner(self):
+        self.active = False
+
+    def request_a_spawn(self):
+        self.que += 1
+
+    def add_spawnable(self, sge):
+        self.spwan_list.append(sge)
+
+
+    def clean_spawnList (self):
+        for sp in self.spawn_list:
+            if sp.alive is False:
+                self.spwan_list.remove(sp)
+
+
+    def cooldown_passed(self, tick):
+        if self.cooldown%tick == 0:
+            return True
+        return False
+
+
 
 
 #class anima_mgmt:

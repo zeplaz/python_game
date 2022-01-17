@@ -32,6 +32,13 @@ import sys
 
 
 
+class world_config:
+    def __call__(self, *args, **kwargs):
+        w =  world.World()
+        w.add_zone(kwargs['zones'])
+        return w
+
+
 """
 |*==================================================================
 |*                          LOCAL VARIABLES
@@ -48,30 +55,21 @@ SPRIT_SCALING_WARHOG = 0.3
 |*==================================================================
 """
 
+    """
+    ##################################
+    Behavour_steering_defaults
+    ##################################
+    """
 
 
 
-class Zone:
-    def __init__(self, **params):
+Base_aline_parm_pak_01 = {
+        'max_ang_accel':12,
+        'max_rot':45,
+        'radius_dest_arrive':15,
+        'slow_radius':30}
 
-        self.rect = params['rect_size']
-        self.backgroundtex_name = params['background_tex_name']
 
-        # self.paramz = params
-
-class World:
-    def add_zone(this, name, **params):
-        this.zone_map = {name, Zone(params)}
-
-    def add_zones(self, *args):
-        for zone in args:
-            self.add_zone(zone.name, zone.params)
-class world_config:
-    def __call__(self, *args, **kwargs):
-
-         w =  world.World()
-         w.add_zone(kwargs['zones'])
-        return w
 
 
 

@@ -7,7 +7,7 @@ _*****************************
 """
 """
 ##########################
-world.py
+world_mgmt.py
 ##########################
 
 ##########################
@@ -62,27 +62,30 @@ class world_mgmt:
 
     def update_realms(self):
         if self.next_world_flag == True:
-            self.current_world = self.world_map[name]
+            self.current_world.cleanup()
+            self.current_world = self.next_world
+
+        # self.current_world = self.next_world
         # get the new world to load
         # instanste the world. and return it.
-        self.load_world(next_world)
-        self.current_world = self.world_map[name]
+        # name = self.load_world(next_world)
+        # self.current_world = self.world_map[name]
 
     def __test__(self, path, rend, testname):
 
-        test_world = World(testname)
-
+        #test_world = World(testname)
+        print("testing,,moved ot congiurte.?")
         #  sdl2.c
         # background_zp1_base =
-        zp1 = Zone_params(wd_t.Rect(x, y, 800, 800), )
+        #zp1 = Zone_params(wd_t.Rect(x, y, 800, 800), )
 
-        test_world.add_zone("testzone_A01", params)
+     #   test_world.add_zone("testzone_A01", params)
 
-        self.world_map['test_world01', test_world]
+       # self.world_map['test_world01', test_world]
 
-        current_world = test_world
+       # current_world = test_world
 
-    self.world_resources = rez.Rez(rpath, rend)
+      #  self.world_resources = rez.Rez(path, rend)
     # def draw_lists(this):
     #   this.air_list.draw()
 

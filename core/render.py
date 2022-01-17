@@ -18,6 +18,8 @@ _________________________________//
 ##################################
 """
 import OpenGL
+
+import ctypes
 import sdl2.ext as sdlext
 import sdl2
 
@@ -79,3 +81,88 @@ DEF_WIN_HIGHT), flags=sdl2.SDL_WINDOW_OPENGL|sdl2.SDL_WINDOW_RESIZABLE)
 
         #sdl2.SDL_DestroyRenderer(renderer_SDL)
       #  sdlext.SDL_DestoryWindow(this.window)
+class Layer:
+    def __init__(self, rt, a):
+       self.texture = rt
+       self.alpha = a
+
+class Background_texture:
+    def __init__(self, *params):
+        self.layers = []
+        for pr in params:
+            self.layers.append(pr)
+
+class Renderable_texture:
+    def __init__(self, texture, pos, r_type, *params):
+        self.texture = texture
+        self._pos = pos
+        self.r_type = r_type
+        self.texture_dimestion = self.sdl_querry_texture_dimesions(texture)
+        self.componets = {}
+
+        if r_type == 'sprit_sheet':
+            for fs in params:
+                self.frame_size = fs
+                self._current_frame(0,0, fs.X,fs.Y)
+            """
+            for key, comp in comps.items():
+                self.componets[key] =  create_compent(key,comp)
+                """
+        if r_type == 'base_texture':
+            self.frame_size = self.texture_dimestion
+            self._current_frame(0,0, self.frame_size.X,self.frame_size.Y)
+
+        if r_type == 'background_texture':
+           self.frame_size = self.texture_dimestion
+           self._current_frame(0,0, self.frame_size.X,self.frame_size.Y)
+           self.layers = []
+           for pr in params:
+               self.layers.append(pr)
+
+    def sdl_querry_texture_dimesions(self, texture):
+        w =  ctypes.c_int()
+        h =  ctypes.c_int()
+        sdl2.SDL_QueryTexture(texture,None,None,w,h)
+        return sdl2.Rect(0,0,w,h)
+
+    @property
+    def pos(self):
+        return self._pos
+
+    @pos.setter
+    def pos(self, x,y):
+        self._pos = Vector(x,y)
+
+    @property
+    def current_frame(self):
+        return self._current_frame
+
+    @current_frame.setter
+    def current_frame(self,x,y,w,h):
+        self._current_frame = sdl2.SDL_Rect(x,y,w,h)
+
+    def set_current_frame(self,cf):
+        self.current_frame = cf
+
+"""
+class Renderable_sheet_sprit(Renderable_texture):
+        def __init__(self,tex,pos, fs):
+            super().__init__(self,tex,pos,'sprit_sheet')
+
+"""
+
+class Frame_dimetions:
+    def __init__(this,x,y,w,h):
+        this.pos = np.array([x,y])
+        this.size = np.array([w,h])
+
+"""
+    def __init__(this, name, frame, rotated, trimmed, sprit_source_size, source_size, duration):
+        this.name = name
+        this.frame = frame
+        this.rotation = rotation
+        this.trimmed = trimmed
+        this. sprit_source_size = sprit_source_size
+        this.source_size = source_size
+        this.duration = duration
+"""

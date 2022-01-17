@@ -21,94 +21,50 @@ _________________________________//
 ##################################
 """
 
-import numpy as np
-import ctypes
+
+
 #from typing import List, NamedTuple, Tuple, Union, Sequence
 import sdl2
 #Vector = Union[Tuple[float,float], List[float],np.array([float,float])]
 
 #Vector_list = Sequence[Vector]
 
+class Zone:
+    def __init__(self, **params):
+
+        self.rect = params['rect_size']
+        self.backgroundtex_name = params['background_tex_name']
+
+        # self.paramz = params
+
+class World:
+    def __init__(self):
+        self.entity_list = []
+        self.zone_map    = {}
+
+
+    def add_entity(self, enity):
+        self.enity_list =  enity
+
+    def add_zone(this, name, **params):
+        this.zone_map[name] = Zone(params)
+
+    def add_zones(self, *args):
+        for zone in args:
+            self.add_zone(zone.name, zone.params)
+
+
+    def cleanup(self):
+        print("cleaningupworld")
+        self.enity_list.clear()
+        self.zone_map.zone_map()
+
+
+
 
 sheet_data_map = []
 
 RGBA8888 = 'RGBA8888'
-
-class Vector():
-
-    def __init__(self,x,y):
-        self._xy = np.array([x,y])
-
-    def __getitem__(self, index):
-       # print ('\n REcT::__getitem__', type(items), items)
-       return self._xy[index]
-    def magnitude():
-        return np.sqrt(self._xy.dot(self._xy))
-
-    def __mul__(self, other):
-        #self._xy[0]*= other._xy[0]
-    #    self.Y     *= other.Y
-        return np.multiply(self._xy,other._xy)
-
-    def __sub__(self, other):
-        return np.subtract(self_xy,other._xy)
-
-    def __add__(self, other):
-        return np.add(self_xy,other._xy)
-
-    def __LT__(self, other):
-         return np.sqrt(self._xy.dot(self._xy)) <  np.sqrt(other._xy.dot(other._xy))
-
-    def __GT__(self,other):
-        return np.sqrt(self._xy.dot(self._xy)) >  np.sqrt(other._xy.dot(other._xy))
-
-    def __IMUL__(self,other):
-        self._zy = self._xy * other._xy
-
-    @property
-    def xy(self):
-        #print("\n\n*** in RECT @property:: val type", type(self._vertz))
-        return self._xy
-
-    @xy.setter
-    def xy(self, value):
-        #print("\n\n*** in RECT SETTER:: val type", type(value))
-        self._xy = value
-
-    @property
-    def X(self):
-        return self._xy[0]
-
-    @X.setter
-    def X(self, x):
-        self._xy[0] = x
-
-    @property
-    def Y(self):
-        return self._xy[1]
-
-    @Y.setter
-    def Y(self,y):
-        self._xy[1] = y
-
-class Rect():
-    def __init__(self,x,y,w,h):
-        self._vertz = np.array([x,y,w,h])
-      #  print("\n\n*** in RECT __init__:: self.vertz", type(self._vertz))
-       # print("value in x: ", self._vertz[0])
-
-    def __getitem__(self, index):
-       # print ('\n REcT::__getitem__', type(items), items)
-       return self._vertz[index]
-    @property
-    def vertz(self):
-        #print("\n\n*** in RECT @property:: val type", type(self._vertz))
-        return self._vertz
-
-    @vertz.setter
-    def vertz(self, value):
-        #print("\n\n*** in RECT SETTER:: val type", type(value))
-        self._vertz = value
 
 class sprit_meta:
     def __init__(this,path_image,s_size,scale_k,formate):
@@ -148,88 +104,3 @@ class create_compent():
         return self
 
 
-class Layer:
-    def __init__(self, rt, a):
-       self.texture = rt
-       self.alpha = a
-
-class Background_texture:
-    def __init__(self, *params):
-        self.layers = []
-        for pr in params:
-            self.layers.append(pr)
-
-class Renderable_texture:
-    def __init__(self, texture, pos, r_type, *params):
-        self.texture = texture
-        self._pos = pos
-        self.r_type = r_type
-        self.texture_dimestion = self.sdl_querry_texture_dimesions(texture)
-        self.componets = {}
-
-        if r_type == 'sprit_sheet':
-            for fs in params:
-                self.frame_size = fs
-                self._current_frame(0,0, fs.X,fs.Y)
-            """
-            for key, comp in comps.items():
-                self.componets[key] =  create_compent(key,comp)
-                """
-        if r_type == 'base_texture':
-            self.frame_size = self.texture_dimestion
-            self._current_frame(0,0, self.frame_size.X,self.frame_size.Y)
-
-        if r_type == 'background_texture':
-           self.frame_size = self.texture_dimestion
-           self._current_frame(0,0, self.frame_size.X,self.frame_size.Y)
-           self.layers = []
-           for pr in params:
-               self.layers.append(pr)
-
-    def sdl_querry_texture_dimesions(self, texture):
-        w =  ctypes.c_int()
-        h =  ctypes.c_int()
-        sdl2.SDL_QueryTexture(texture,None,None,w,h)
-        return sdl2.Rect(0,0,w,h)
-
-    @property
-    def pos(self):
-        return self._pos
-
-    @pos.setter
-    def pos(self, x,y):
-        self._pos = Vector(x,y)
-
-    @property
-    def current_frame(self):
-        return self._current_frame
-
-    @current_frame.setter
-    def current_frame(self,x,y,w,h):
-        self._current_frame = sdl2.SDL_Rect(x,y,w,h)
-
-    def set_current_frame(self,cf):
-        self.current_frame = cf
-
-"""
-class Renderable_sheet_sprit(Renderable_texture):
-        def __init__(self,tex,pos, fs):
-            super().__init__(self,tex,pos,'sprit_sheet')
-
-"""
-
-class Frame_dimetions:
-    def __init__(this,x,y,w,h):
-        this.pos = np.array([x,y])
-        this.size = np.array([w,h])
-
-"""
-    def __init__(this, name, frame, rotated, trimmed, sprit_source_size, source_size, duration):
-        this.name = name
-        this.frame = frame
-        this.rotation = rotation
-        this.trimmed = trimmed
-        this. sprit_source_size = sprit_source_size
-        this.source_size = source_size
-        this.duration = duration
-"""
