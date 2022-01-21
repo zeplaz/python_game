@@ -48,6 +48,7 @@ class Anima_Type(Enum):
     VIEW_LENZ_01     = 203
     GENERATOR_       = 304
     SPAWNER_         = 405
+
 nima_types = {
         'FLOCK_AIR_01'    :1,
         'FLOCK_AIR_02'    :2,
@@ -97,16 +98,15 @@ class Anima(Depolyable_game_enity):
         self.collision_radius:float = 0.0
         self.scale: float = 1.0
 
-
     def add_texture(self,base_texture, pos, r_type, *params):
-        self.texture = wd_t.Renderable_texture(base_texture, pos, r_type, params)
+       # self.texture = wd_t.Renderable_texture(base_texture, pos, r_type, params)
 
 
 # for Que if que is nrgitve - this means "run infinently till disabeld or destroeyd"
 
 class Spawner(Anima):
     def __init__(self, pos, Damg_stat):
-        super(Spawner, self).__init__(pos,Damg_stat)
+        super('_Spawner', self).__init__(pos,Damg_stat)
 
         #ds lookup
         self.active     = False
@@ -132,7 +132,7 @@ class Spawner(Anima):
         #clean_spawnList()
         if self.que = 0:
             return 'EMPTY'
-        if not cooldown_passed(dt):
+        if not self.cooldown_passed(dt):
             return 'UNCOOL'
         else:
             return #(que,spawn_list)

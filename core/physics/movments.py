@@ -5,8 +5,6 @@ _*****************************
 @author: matthew
 ##########################
 """
-import math
-
 """
 ##########################
 movments.py
@@ -25,7 +23,7 @@ _________________________________//
 """
 
 import numpy as np
-
+import math
 
 def map_to_pi_range(a):
     while a > np.pi:
@@ -169,11 +167,6 @@ class Vector2D():
     def Y(self,y):
         self._xy[1] = y
 
-
-
-
-
-
 class Rect():
     def __init__(self,x,y,w,h):
         self._vertz = np.array([x,y,w,h])
@@ -195,107 +188,3 @@ class Rect():
 
 
 
-
-##_____________
-##___________________ALIGN_
-
-
-
-class Align:
-
-    def __call__(self,char_k, D_o ):
-        self.character = char_k
-        self.destination_obktive = D_o
-        return self.get_steering()
-
-    def __init__(self,**alin_params ):
-
-        self.max_angular_acceleration = alin_params['max_ang_accel']
-        self.max_rotation      =        alin_params['max_rot']
-        self.radius_dest_arrive=        alin_params['radius_dest_arrive']
-        self.slow_radius       =        alin_params['slow_radius']
-        self.time_to_dest  =           0.1
-
-    def get_steering(self):
-        rotation = self.destination_obktive.orientation - self.character.orientation
-        rotation = map_to_pi_range(rotation)
-
-        rotation_size =  np.absolute(rotation)
-
-
-class Look_where_your_going(Align):
-    def __init__(this):
-        super().__init__()
-
-class Face(Align):
-    def __init(this):
-        super().__init__()
-
-##________###30##_ALIGN__FIN_____
-
-####___________Seek_Flee_______
-
-class Seek_Flee:
-    def __call__(self,char_Kin, Ds_O , accel_override)  -> Steering_out:
-        self.character = char_Kin
-        self.destination_obktive = Ds_O
-
-        if accel_override is None:
-            return self.get_steering()
-        else :
-            return self.get_steering(accel_override)
-    def __init__(self, max_accel):
-        self.max_acceleration = max_accel
-
-
-    def get_steering(self, accel_override) -> Steering_out:
-        out_linear  = self.destination_obktive.pos - self.character.pos
-        out_linear.normalize()
-        if accel_override is not None :
-            out_linear*= accel_override
-
-        out_linear *= self.max_acceleration
-        out_angular = 0
-        return Steering_out(out_linear, out_angular)
-
-
-
-
-class Wander(Seek_Flee):
-    def __init__(this):
-        super().__init__()
-
-class Pursue_Evade(Seek_Flee):
-    def __init__(this):
-        super().__init__()
-class Path_following(Seek_Flee):
-    def __init__(this):
-        super().__init__()
-###CLASS COLLISION AVOIDANCE IS IN THIS CHAIN BUT LOCAKED IN OWN MODUAL--collision.pu
-
-
-###___Seek_Flee__FIN_____
-
-###___VELOCITY_MATCH_____
-
-class Velocity_match:
-    def __init__(this):
-        pass
-
-class Arrive(Velocity_match):
-    def __init__(this):
-        pass
-
-##___VELOCITY_MATCH__FIN___
-
-###___FORCE_FEILD_____
-class Force_feild:
-    def __init__(this):
-        pass
-
-class Seperation(Force_feild):
-    def __init__(this):
-        pass
-
-
-##___FORCE_FEILD_____FIN___

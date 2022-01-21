@@ -22,6 +22,7 @@ _________________________________//
 """
 
 
+import numpy as np
 
 from aitests import movments as mov
 
@@ -29,6 +30,32 @@ X_POS = 0
 Y_POS = 1
 W_POS = 2
 H_POS = 3
+
+ELIPSON0003 = 0.0003
+class Line:
+    def __init__(self, origin, unit_Leng_direction_vec):
+        self.origin = origin
+        self.unit_L_direction = unit_Leng_direction_vec
+
+        self.U = self.CCW_perp(self.unit_L_direction)
+        self.V = self.CW_perp(self.unit_L_direction)
+
+    #def get_mutual_vecs(self):
+
+    def CCW_perp(self, vec):
+        temp = vec.X
+        vec.X = vec.Y
+        vec.Y =  np.negative(temp)
+
+    def CW_perp(self, vec):
+        temp = vec.Y
+        vec.Y = vec.X
+        vec.X = np.negative(temp)
+
+
+
+
+
 
 class collision_system:
     

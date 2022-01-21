@@ -116,7 +116,8 @@ class Rez:
         this.spsheet_parser.__test__(this.path_map["root_path"])
         this.game_data_parser.__test__(this.path_map["root_path"])
 
-        this.add_sprit_sheet_cache("f16Engine_test",this.path_map["root_path"]+this.path_map["animationz"]+"/f16/f16_engine","f16_engine_on_00")
+        this.add_sprit_sheet_cache("f16Engine_test",this.path_map["root_path"]+
+                                   this.path_map["animationz"]+"/f16/f16_engine","f16_engine_on_00")
         new_texture = this.create__sprit_sheet_testure("f16Engine_test")
         print("the created sprittexuter..",type(new_texture))
     #    this.spsheet_parser.

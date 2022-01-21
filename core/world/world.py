@@ -32,6 +32,12 @@ class world_mgmt:
         self.world_map             = {}
         self.world_configurer      = w_config.world_config()
 
+
+
+    def add_entity_to_world(self, entity):
+        w_enity_ID = get_next_worldID()
+        enity.worldID = w_enity_ID
+
     @property
     def next_world_flag(self):
         return self._flag_load_next_world
@@ -59,6 +65,21 @@ class world_mgmt:
                   "\n fyi:you will remain in current world\n")
 
         return
+
+    def update_spawners(self):
+        for sp in self.spawners
+
+    def add_anima_to_world(self, anima):
+        pass
+
+    def add_spawnlist_to_world(self,spawn_list):
+
+            for anima_ in spawn_list:
+                if anima_.alive is True:
+                    self.add_anima_to_world(anima_)
+
+    def add_new_spawner_to_world(self, *params):
+
 
     def update_realms(self):
         if self.next_world_flag == True:
