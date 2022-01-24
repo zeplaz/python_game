@@ -21,8 +21,37 @@ _________________________________//
 ##################################
 """
 
-
+import core.ID_genrators as ID_gen
 import core.world.worldz_data.world_config as w_config
+
+class Zone:
+    def __init__(self, **params):
+
+        self.rect = params['rect_size']
+        self.backgroundtex_name = params['background_tex_name']
+
+        # self.paramz = params
+
+class World:
+    def __init__(self):
+        self.entity_list = []
+        self.zone_map    = {}
+
+
+    def add_entity(self, enity):
+        self.enity_list.append(enity)
+
+    def add_zone(this, name, **params):
+        this.zone_map[name] = Zone(params)
+
+    def add_zones(self, *args):
+        for zone in args:
+            self.add_zone(zone.name, zone.params)
+
+    def cleanup(self):
+        print("cleaningupworld")
+        self.enity_list.clear()
+        self.zone_map.zone_map()
 
 class world_mgmt:
     def __init__(self):
@@ -32,11 +61,15 @@ class world_mgmt:
         self.world_map             = {}
         self.world_configurer      = w_config.world_config()
 
+    def add_entity_to_world(self, enity):
+            enity.worldID = ID_gen.World_ID()
+            self.current_world.add_entity(enity)
+
+    def update_enitys(self, dt):
+        for ent in enity_list:
+            ent.k_update(ent.steering_behavour(),ent.max_speed,dt)
 
 
-    def add_entity_to_world(self, entity):
-        w_enity_ID = get_next_worldID()
-        enity.worldID = w_enity_ID
 
     @property
     def next_world_flag(self):
@@ -85,6 +118,8 @@ class world_mgmt:
         if self.next_world_flag == True:
             self.current_world.cleanup()
             self.current_world = self.next_world
+
+
 
         # self.current_world = self.next_world
         # get the new world to load

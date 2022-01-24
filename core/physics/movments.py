@@ -24,13 +24,8 @@ _________________________________//
 
 import numpy as np
 import math
+import core.pysics.maths as l_maths
 
-def map_to_pi_range(a):
-    while a > np.pi:
-        a -=2* np.pi
-    while a <  -np.pi:
-        a += 2* np.pi
-    return a
 
 class Steering_out:
     def    __init__(self, lin, ang):
@@ -58,7 +53,7 @@ class Kinematic:
         this.rotation   = r
 
 
-    def update(self,steering_out,max_sp,dt):
+    def k_update(self,steering_out,max_sp,dt):
         self.pos += self.velocity * dt
         self.orientation += self.rotation * dt
 
@@ -71,8 +66,12 @@ class Kinematic:
 
 
 class phy_Character(Kinematic):
-    def __init__(slef,in_p,in_o ):
+    def __init__(self,in_p,in_o, max_speed):
         super().__init__(in_p, in_o, 0 ,0)
+
+        self.collision_radius:float = 0.0
+        self.max_speed:float = max_speed
+
 
 class phy_Destination_Objective():
     def __init__(self):
@@ -185,6 +184,3 @@ class Rect():
     def vertz(self, value):
         #print("\n\n*** in RECT SETTER:: val type", type(value))
         self._vertz = value
-
-
-

@@ -26,7 +26,7 @@ import sdl2
 
 
 #
-import core.world.worlddata_types as wd_t
+
 
 
 CLEAR_COLOUR_RGB = sdl2.ext.Color(79,98,155)

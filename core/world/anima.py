@@ -30,9 +30,9 @@ import sys
 
 #import core.parser as pars
 
-import core.world.worlddata_types as wd_t
 
-import core.physics.movments as mov
+import core.entitys as entity
+#import core.physics.movments as mov
 #import core.render as rend
 
 
@@ -62,43 +62,22 @@ nima_types = {
         'SPAWNER_'        :405
         }
 
-class Hitbox_region:
-    def __init__(self,x,y,w,h):
-        self.rect = wd_t.Rect(x,y,w,h)
-        self.info = 'add_info:or params to hitregions'
-
-class Damage_state:
-    def __init__(this, hitbox_reg,hp):
-        this.Hitbox_regions = hitbox_reg
-        this.HP = hp
 
 
-class Depolyable_game_enity(mov.phy_Character):
-    def __init__(self,pos,behavour_steering):
-        super().__init__(pos)
-        steering_b = behavour_steering
-        #self.pos = pos #wd_t.Vector(0, 0)
-        self._damage_stat = None
-    def update_steering(self):
-      ster_out  =  self.steering_b.get_steering()
 
-    @property
-    def damage_stat(self):
-       return self._damage_stat
-
-    @damage_stat.setter
-    def damage_stat(this, HB_reg, hp):
-       this._damage_stat.hitbox_regions = HB_reg
-       this._damage_stat.HP = hp
-
-
-class Anima(Depolyable_game_enity):
+class Anima(entity.Depolyable_game_enity):
     def __init__(self,ana_type, pos, dS):
         super().__init__(pos, dS)
-        self.collision_radius:float = 0.0
-        self.scale: float = 1.0
 
-    def add_texture(self,base_texture, pos, r_type, *params):
+        #def update_steering(self):
+
+    def add_texture(self, tname):
+        self.texture_list.append(tname)
+
+    def add_animation(self, name):
+        self.animation = name
+
+    #def add_texture(self,base_texture, pos, r_type, *params):
        # self.texture = wd_t.Renderable_texture(base_texture, pos, r_type, params)
 
 

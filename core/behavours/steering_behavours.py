@@ -22,14 +22,101 @@ _________________________________//
 ##################################
 """
 import numpy as np
+import core.physics.maths as l_maths
 
 import core.physics.movments as mov
 ##_____________
 
+"""
+###############################################
+DICTIONARY_MAP PREFABS:
+###############################################
+"""
 
-class Velocity_match:
-    def __init__(self, **parms):
-        self.max_acceleration = parms['max_accel']
+alin_params["max_ang_accel":0,"max_rot":0,"radius_dest_arrive":0, "slow_radius":0 ]
+BWeights = {"threat_index": 0.0,"distance": 0.0,"panic_index": 0.0}
+
+"""
+###############################################
+"""
+
+class behavour_weights:
+    def __init__():
+        global BWeights
+        self._weights = BWeights
+
+    @property
+    def weights(self):
+        return self._weights
+
+    @weights.setter
+    def weights(self, indexname, val):
+        self._weights[indexname] = val
+
+    def set_threat_index(self, ti):
+        self._weights['threat_index'] = ti
+
+    def set_distance_index(self, di):
+        self._weights['distance'] = d
+
+    def set_panic_index(self, p_i):
+        weights['panic_index'] = p_i
+
+
+class genrate_steering_prority():
+
+    def dist_panic_cal(pan_i, d):
+
+        if pan_i > d:
+            return 0.8
+
+        if pan_i < d:
+            return 0.3
+
+
+class streering_heap:
+    def __init__(self):
+        self.steering_que = []
+        heapq.heapify(steering_que)
+
+    def push(self, in_steering):
+        heapq.heappush(self.steering_que, in_steering)
+
+    def pop(self):
+        return heapq.pop(self.steering_que)
+
+    def pop_and_return(self):
+        temp = heappq.pop(self.steering_que)
+
+class Steering_behavour:
+
+     def __lt__(self, nxt):
+        return self._priority < nxt._priority
+
+    @property
+    def priority(self):
+        return self._priority
+
+    @priority.setter
+    def priority(self, val):
+        self._priority = val
+         
+#class wait:
+
+class contune(Steering_behavour):
+#    def __init__(self):
+    def __call__(self, char_k):
+            self.character = char_k
+            #mov.Steering_out(0,0)
+            return self.get_steering()
+
+    def get_steering(self):
+        self.character.velocity
+        self.character.rotation
+
+class Velocity_match(Steering_behavour):
+    def __init__(self, max_accel):
+        self.max_acceleration = max_accel
 
     def __call__(self, char_k, destination_obktive,ttd):
         self.character = char_k
@@ -49,7 +136,8 @@ class Velocity_match:
 ##___________________ALIGN_
 
 
-class Align:
+
+class Align(Steering_behavour):
 
     def __call__(self,char_k, D_o,  time_to_dest):
         self.character = char_k
@@ -59,6 +147,9 @@ class Align:
         return self.get_steering()
 
     def __init__(self,**alin_params ):
+        if alin_params == None
+            global alin_params
+
         self.max_angular_acceleration = alin_params['max_ang_accel']
         self.max_rotation      =        alin_params['max_rot']
         self.radius_dest_arrive=        alin_params['radius_dest_arrive']
@@ -104,7 +195,7 @@ class Face(Align):
 
 ####___________Seek_Flee_______
 
-class Seek_Flee:
+class Seek_Flee(Steering_behavour):
     def __call__(self,char_Kin, Ds_O , accel_override)  -> Steering_out:
         self.character = char_Kin
         self.destination_obktive = Ds_O
@@ -132,15 +223,17 @@ class Seek_Flee:
 
 
 class Wander(Seek_Flee):
-    def __init__(this):
-        super().__init__()
+    def __init__(self,max_accel):
+        super().__init__(max_accel)
 
 class Pursue_Evade():
-    def __init__(this):
+    def __init__(self):
+        pass
 
 class Path_following(Seek_Flee):
-    def __init__(this):
-        super().__init__()
+    def __init__(slef,max_accel):
+        super().__init__(max_accel)
+        pass
 ###CLASS COLLISION AVOIDANCE IS IN THIS CHAIN BUT LOCAKED IN OWN MODUAL--collision.pu
 
 

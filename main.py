@@ -34,19 +34,22 @@ import sys
 
 import core.engine as Eng
 
-DEFUALT_TESTS_RUN = True 
-DEFAULT_START     = False 
- 
+DEFUALT_TESTS_RUN = True
+DEFAULT_START     = False
+
 
 def main():
 
    if (len(sys.argv) > 1):
       eng = Eng.Engine(sys.argv)
    else :
-      eng = Eng.Engine()   
-    eng.__run__()
+      eng = Eng.Engine()
 
-    eng.shutdown()
+###run main app:: engine and while
+###
+    if eng.run == True:
+        eng.__run__()
+        eng.shutdown()
 
     print("###30##")
     return 0

@@ -23,23 +23,17 @@ _________________________________//
 
 """
 
-class Drift_Offset(Orienation, Postion):
-    def __init__(this,in_x, in_y, in_z, in_angle)
-    Postion.__init__(in_x,in_y,in_z)
-    Orienation.__init__(in_angle)
+class Drift_Offset():
+    def __init__(self,in_x, in_y, in_angle)
+    self.pos Vector2D(in_x,in_y)
+    self.Orienation = in_angle
 
     #super().__init__(in_angle)
 
-class Formation_Manager :
-
-
+class Formation_Manager:
     class Slot_Assignment:
-        caracter
-        slot_number
         def __init__(this, in_caracter, in_number):
             this.caracter = in_caracter
             this.in_number = slot_number
-
-
 
     slot_assignments = []

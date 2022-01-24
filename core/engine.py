@@ -101,21 +101,20 @@ class Engine:
         this._render = rend.render()
         this.worldmgmt = world_m.World_mgmt()
 
+
         if Lcmdz_map['R_tests'] is not True:
             R_TESTS = True
 
         if Lcmdz_map['start'] is not True:
             run = True
 
-        if run:
-            this.__run__()
 
     def __test__(self):
         print("\n ****************ENGINE)((()__TEST__())()))*******\n")
 
         #this.rez =  rez.Rez(this.root_path, this._render)
         #this.rez.__test__()
-        self.worldmgmt.__test__(this.root_path ,this._render, 'testworld_0A')         
+        self.worldmgmt.__test__(this.root_path ,this._render, 'testworld_0A')
 
 
 
@@ -152,6 +151,7 @@ class Engine:
 
     def render_update(this):
         this._render.prep()
+        this.worldmgmt.draw()
         #this._render.draw()
 
     def update_realms(self):

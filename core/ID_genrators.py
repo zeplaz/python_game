@@ -20,6 +20,9 @@ ________________________________
 _________________________________//
 ##################################
 """
+global the_next_id
+
+import heapq
 
 class Counter():
     count = 0
@@ -41,5 +44,9 @@ class Next_ID():
         return newid
 
 class E_ID:
+    def __init__(this):
+        return Next_ID()
+
+class World_ID:
     def __init__(this):
         return Next_ID()
