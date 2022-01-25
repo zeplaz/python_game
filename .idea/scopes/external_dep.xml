@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="external_dep" pattern="ext:*/" />
+</component>
