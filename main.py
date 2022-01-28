@@ -49,7 +49,8 @@ def main():
 ###
     if eng.run == True:
         eng.__run__()
-        eng.shutdown()
+    
+    eng.shutdown()
 
     print("###30##")
     return 0

@@ -21,6 +21,7 @@ _________________________________//
 ##################################
 """
 
+import core.status_state as status 
 import core.ID_genrators as ID_gen
 import core.world.worldz_data.world_config as w_config
 
@@ -36,6 +37,8 @@ class World:
     def __init__(self):
         self.entity_list = []
         self.zone_map    = {}
+        self.status =  status.INITAL 
+        self.tela_Post_map = {}
 
 
     def add_entity(self, enity):
@@ -69,8 +72,30 @@ class world_mgmt:
         for ent in enity_list:
             ent.k_update(ent.steering_behavour(),ent.max_speed,dt)
 
-
-
+    
+    def open_pause_menu(self):
+        pass
+    
+    
+    def run_world(self):  
+        
+        pass
+    
+    def pause_world(self):
+        self.state = tatus.PAUSED
+        
+        pass
+    
+   
+    def pass_event(self, event, dest):
+        tela_Post_map[dest].handle(event)
+    
+    def registar_at_tela_post(self, name, object):
+        self.tela_Post_map[name] = object 
+     
+    def unscrib_at_tela_post(self, name):
+        del self.tela_Post_map[name]
+    
     @property
     def next_world_flag(self):
         return self._flag_load_next_world
@@ -87,6 +112,8 @@ class world_mgmt:
             self.world_map[name] = self.world_configurer(params)
 
     def load_world(self, name):
+        self.state = status.LOADING
+        
         if name in self.world_map:
             self.next_world_flag == True
             self.next_world = self.world_map[name]
