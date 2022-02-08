@@ -55,20 +55,12 @@ sigma_running = True
 
 R_TESTS = False
 
-# engine status
-INITAL   = 1
-CONFIG   = 3
-IGNITION = 4
-RUNNING  = 5
-ERROR_HANDLED = 0
-ERROR_FATAIL = -1
-ERROR_UNKNOWN = -2
-
 # sdl input keys states
 KEY_UP = 1
 KEY_DOWN = 0
 
 
+#Defult engine status state 
 sigma_status = INITAL
 
 """

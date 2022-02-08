@@ -23,17 +23,18 @@ _________________________________//
 """
 
 #untill the proper mvoment algurthsm are finshed. in physics, well just hanlde it here
+import enum
+import core.physics.movments as mov
+import core.component_visit comp
 
-core.physics.movments as mov
-
-class Hitbox_region:
+class Hitbox_rectangle:
     def __init__(self,x,y,w,h):
         self.rect = wd_t.Rect(x,y,w,h)
         self.info = 'add_info:or params to hitregions'
 
-class Damage_state:
+class Damage_state(comp.component):
     def __init__(this, hitbox_reg,hp):
-        this.Hitbox_regions = hitbox_reg
+        this.hitbox_rect = hitbox_reg
         this.HP = hp
 
 
@@ -49,18 +50,25 @@ class move_override:
 
     return None
 
-c
-class Depolyable_game_enity(mov.phy_Character):
-    def __init__(self,pos, ortaion,max_speed, is_ghost):
-        super().__init__(pos,ortaion)
-        if is_ghost == True
-            self.is_ghost = True
-        else:
-            self.is_ghost = False
+class anima_state(enum.Enum):
+    ACTIVE = 1
+    PAUSED = 0
+    DEAD   =-1
 
-        self._damage_stat = None
+class Depolyable_game_enity(mov.phy_Character,componatable):
 
+    def set_phy_char(self,):
+
+    def __init__(self,pos,ortaion,max_speed, is_ghost):
+        mov.phy_Character.__init__(pos,ortaion,max_speed)
+
+        self.state = anima_state.PAUSED
+        self.is_ghost = is_ghost
+        self.is_ghost = is_ghost
         self.scale: float = 1.0
+
+        #conver to compoents!
+        self._damage_stat = None
         self.steering_b = None
 
     @property
