@@ -27,6 +27,9 @@ import math
 import core.pysics.maths as l_maths
 
 
+import core.component_visit as comp
+
+
 class Steering_out:
     def    __init__(self, lin, ang):
         self.linear  =lin
@@ -67,7 +70,7 @@ class Kinematic:
 
 class phy_Character(Kinematic):
     def __init__(self,in_p,in_o, max_speed):
-        super().__init__(in_p, in_o, 0 ,0)
+        Kinematic().__init__(in_p, in_o, 0 ,0)
 
         self.collision_radius:float = 0.0
         self.max_speed:float = max_speed
