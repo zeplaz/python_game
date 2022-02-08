@@ -64,8 +64,9 @@ nima_types = {
 
 
 
+c
 
-class Anima(entity.Depolyable_game_enity):
+class Anima():
     def __init__(self,ana_type, pos, dS):
         super().__init__(pos, dS)
 
